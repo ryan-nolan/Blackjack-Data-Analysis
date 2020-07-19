@@ -59,7 +59,7 @@ for file in files:
             explode = (0.0, 0.0, 0.0, 0.1, 0.2, 0.3)
             axesObject.pie(sortedWinPercentageFreq.values(), labels=sortedWinPercentageFreq.keys(), autopct=autopct(sortedWinPercentageFreq.values()),startangle=90, explode=explode)
 
-            plt.title(file+ "\nWinPercentage")
+            plt.title(file+ "\nWin Percentage")
             plt.savefig(os.getcwd()+'\\Graphs\\WinPercentagePie\\'+file+'.png')
             #plt.show()
             
