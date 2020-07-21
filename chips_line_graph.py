@@ -56,9 +56,12 @@ for file in files:
             plt.xlim(x0, x1)
             plt.ylim(y0-100, y1+100)
             plt.title(file + '\nChip Count Per Turn')
+            plt.xlabel('Hand Number')
+            plt.ylabel('Chip Count')
             plt.savefig(os.getcwd()+'\\Graphs\\ChipsWonLine\\'+file+'.png')
+            plt.clf()
             
-            plt.show()
+            #plt.show()
         
 
 
