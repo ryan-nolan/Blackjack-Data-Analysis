@@ -41,20 +41,20 @@ if len(sys.argv) == 1:
                 for result in winPercentage.values():
                     winPercentageCounter[result] += 1
                 
-                sortedWinPercentageFreq = {'W': 0,'L': 0,'D': 0,'W_N': 0, 'L_N' : 0,'D_N': 0}
+                sortedWinPercentageFreq = {'W': 0,'L': 0,'D': 0}
                 for key in winPercentageCounter:
-                if key == 'W':
-                    sortedWinPercentageFreq['W'] = winPercentageCounter[key]
-                if key == 'L':
-                    sortedWinPercentageFreq['L'] = winPercentageCounter[key]
-                if key == 'D':
-                    sortedWinPercentageFreq['D'] = winPercentageCounter[key]
-                if key == 'W_N':
-                    sortedWinPercentageFreq['W'] += winPercentageCounter[key]
-                if key == 'L_N':
-                    sortedWinPercentageFreq['L'] += winPercentageCounter[key]
-                if key == 'D_N':
-                    sortedWinPercentageFreq['D'] += winPercentageCounter[key]
+                    if key == 'W':
+                        sortedWinPercentageFreq['W'] = winPercentageCounter[key]
+                    if key == 'L':
+                        sortedWinPercentageFreq['L'] = winPercentageCounter[key]
+                    if key == 'D':
+                        sortedWinPercentageFreq['D'] = winPercentageCounter[key]
+                    if key == 'W_N':
+                        sortedWinPercentageFreq['W'] += winPercentageCounter[key]
+                    if key == 'L_N':
+                        sortedWinPercentageFreq['L'] += winPercentageCounter[key]
+                    if key == 'D_N':
+                        sortedWinPercentageFreq['D'] += winPercentageCounter[key]
                 print(sortedWinPercentageFreq)
                 figureObject, axesObject = plt.subplots()
                 axesObject.pie(sortedWinPercentageFreq.values(), labels=sortedWinPercentageFreq.keys(), autopct=autopct(sortedWinPercentageFreq.values()),startangle=90)
