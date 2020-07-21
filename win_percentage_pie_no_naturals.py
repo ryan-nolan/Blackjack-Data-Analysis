@@ -43,25 +43,24 @@ if len(sys.argv) == 1:
                 
                 sortedWinPercentageFreq = {'W': 0,'L': 0,'D': 0,'W_N': 0, 'L_N' : 0,'D_N': 0}
                 for key in winPercentageCounter:
-                    if key == 'W':
-                        sortedWinPercentageFreq['W'] = winPercentageCounter[key]
-                    if key == 'L':
-                        sortedWinPercentageFreq['L'] = winPercentageCounter[key]
-                    if key == 'D':
-                        sortedWinPercentageFreq['D'] = winPercentageCounter[key]
-                    if key == 'W_N':
-                        sortedWinPercentageFreq['W_N'] = winPercentageCounter[key]
-                    if key == 'L_N':
-                        sortedWinPercentageFreq['L_N'] = winPercentageCounter[key]
-                    if key == 'D_N':
-                        sortedWinPercentageFreq['D_N'] = winPercentageCounter[key]
+                if key == 'W':
+                    sortedWinPercentageFreq['W'] = winPercentageCounter[key]
+                if key == 'L':
+                    sortedWinPercentageFreq['L'] = winPercentageCounter[key]
+                if key == 'D':
+                    sortedWinPercentageFreq['D'] = winPercentageCounter[key]
+                if key == 'W_N':
+                    sortedWinPercentageFreq['W'] += winPercentageCounter[key]
+                if key == 'L_N':
+                    sortedWinPercentageFreq['L'] += winPercentageCounter[key]
+                if key == 'D_N':
+                    sortedWinPercentageFreq['D'] += winPercentageCounter[key]
                 print(sortedWinPercentageFreq)
                 figureObject, axesObject = plt.subplots()
-                explode = (0.0, 0.0, 0.0, 0.1, 0.2, 0.3)
-                axesObject.pie(sortedWinPercentageFreq.values(), labels=sortedWinPercentageFreq.keys(), autopct=autopct(sortedWinPercentageFreq.values()),startangle=90, explode=explode)
+                axesObject.pie(sortedWinPercentageFreq.values(), labels=sortedWinPercentageFreq.keys(), autopct=autopct(sortedWinPercentageFreq.values()),startangle=90)
 
-                plt.title(file+ "\nWin Percentage Including Naturals")
-                plt.savefig(os.getcwd()+'\\Graphs\\WinPercentagePie\\'+file+'.png')
+                plt.title(file+ "\nWin Percentage")
+                plt.savefig(os.getcwd()+'\\Graphs\\WinPercentagePieNoNaturals\\'+file+'.png')
                 #plt.show()
 elif len(sys.argv) == 2:
     file = sys.argv[1]
@@ -82,7 +81,7 @@ elif len(sys.argv) == 2:
             for result in winPercentage.values():
                 winPercentageCounter[result] += 1
             
-            sortedWinPercentageFreq = {'W': 0,'L': 0,'D': 0,'W_N': 0, 'L_N' : 0,'D_N': 0}
+            sortedWinPercentageFreq = {'W': 0,'L': 0,'D': 0}
             for key in winPercentageCounter:
                 if key == 'W':
                     sortedWinPercentageFreq['W'] = winPercentageCounter[key]
@@ -91,16 +90,15 @@ elif len(sys.argv) == 2:
                 if key == 'D':
                     sortedWinPercentageFreq['D'] = winPercentageCounter[key]
                 if key == 'W_N':
-                    sortedWinPercentageFreq['W_N'] = winPercentageCounter[key]
+                    sortedWinPercentageFreq['W'] += winPercentageCounter[key]
                 if key == 'L_N':
-                    sortedWinPercentageFreq['L_N'] = winPercentageCounter[key]
+                    sortedWinPercentageFreq['L'] += winPercentageCounter[key]
                 if key == 'D_N':
-                    sortedWinPercentageFreq['D_N'] = winPercentageCounter[key]
+                    sortedWinPercentageFreq['D'] += winPercentageCounter[key]
             print(sortedWinPercentageFreq)
             figureObject, axesObject = plt.subplots()
-            explode = (0.0, 0.0, 0.0, 0.1, 0.2, 0.3)
-            axesObject.pie(sortedWinPercentageFreq.values(), labels=sortedWinPercentageFreq.keys(), autopct=autopct(sortedWinPercentageFreq.values()),startangle=90, explode=explode)
+            axesObject.pie(sortedWinPercentageFreq.values(), labels=sortedWinPercentageFreq.keys(), autopct=autopct(sortedWinPercentageFreq.values()),startangle=90)
 
-            plt.title(file+ "\nWin Percentage Including Naturals")
-            plt.savefig(os.getcwd()+'\\Graphs\\WinPercentagePie\\'+file+'.png')
+            plt.title(file+ "\nWin Percentage")
+            plt.savefig(os.getcwd()+'\\Graphs\\WinPercentagePieNoNaturals\\'+file+'.png')
             plt.show()

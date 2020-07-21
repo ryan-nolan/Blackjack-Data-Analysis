@@ -27,8 +27,6 @@ for file in files:
         with open(file) as csvfile:
             csv_reader = csv.reader(csvfile)
             print(file)
-            dealersUpCardFreq = {}
-            winPercentage = {}
             chips = {}
             for row in csv_reader:
                 turnNumber = row[0]
@@ -60,7 +58,7 @@ for file in files:
             plt.title(file + '\nChip Count Per Turn')
             plt.savefig(os.getcwd()+'\\Graphs\\ChipsWonLine\\'+file+'.png')
             
-            #plt.show()
+            plt.show()
         
 
 
