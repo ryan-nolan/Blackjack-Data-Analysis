@@ -11,7 +11,7 @@ import statistics
 
 # %%
 #File Handling
-path = Path("C:/Users/Ryan/Desktop/Dissertation/Data") #insert folder path here
+path = Path("C:/Users/Ryan/Desktop/Dissertation/Source/Data") #insert folder path here
 os.chdir(path)
 files = os.listdir()
 

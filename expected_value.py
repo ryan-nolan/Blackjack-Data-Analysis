@@ -45,24 +45,4 @@ if len(sys.argv) == 1:
                 print(statistics.mean(chipGainPerHundredHands.values()))
                 print(statistics.stdev((chipGainPerHundredHands.values())))
                 
-                """
-                minBetString = overMinBetCounter.most_common(1)[0][0]
-                print(minBetString)
-                sortedOverMinBetFreq = {'MinBet' : 0, 'Above MinBet': 0}
-                for key in overMinBetCounter:
-                    if key == minBetString:
-                        sortedOverMinBetFreq['MinBet'] += overMinBetCounter[key]
-                    else:
-                        sortedOverMinBetFreq['Above MinBet'] += overMinBetCounter[key]
-                print(sortedOverMinBetFreq)
-                
-                
-                figureObject, axesObject = plt.subplots()
-                axesObject.pie(overMinBetCounter.values(), labels=overMinBetCounter.keys(), autopct=autopct(overMinBetCounter.values()),startangle=90)
-
-                plt.title(file+ "\nAmount Bet Percentage")
-                plt.savefig(os.getcwd()+'\\Graphs\\ExactBetAmountPie\\'+file+'.png')
-                
-                plt.show()
-                """
                 

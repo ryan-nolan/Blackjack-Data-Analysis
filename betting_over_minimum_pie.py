@@ -19,7 +19,7 @@ def autopct(values):
 
 # %%
 #File Handling
-path = Path("C:/Users/Ryan/Desktop/Dissertation/Data") #insert folder path here
+path = Path("C:/Users/Ryan/Desktop/Dissertation/Source/Data") #insert folder path here
 os.chdir(path)
 files = os.listdir()
 print(sys.argv)
@@ -60,4 +60,4 @@ if len(sys.argv) == 1:
                 plt.title(file+ "\nMinimum Bet Percentage")
                 plt.savefig(os.getcwd()+'\\Graphs\\AboveMinBetPie\\'+file+'.png')
                 
-                plt.show()
+                #plt.show()
