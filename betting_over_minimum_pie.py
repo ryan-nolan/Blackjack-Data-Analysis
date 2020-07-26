@@ -32,15 +32,11 @@ if len(sys.argv) == 1:
                 csv_reader = csv.reader(csvfile)
                 print(file)
                 overMinBetPercentage = {}
-                i = 0
                 for row in csv_reader:
                     turnNumber = row[0]
                     stake = row[8]
-                    if i == 2:
-                        minBet = stake
-                    
                     overMinBetPercentage[turnNumber] = stake
-                    i+= 1
+
                 overMinBetCounter = Counter()
                 for result in overMinBetPercentage.values():
                     overMinBetCounter[result] += 1
@@ -65,43 +61,3 @@ if len(sys.argv) == 1:
                 plt.savefig(os.getcwd()+'\\Graphs\\AboveMinBetPie\\'+file+'.png')
                 
                 plt.show()
-"""
-elif len(sys.argv) == 2:
-    file = sys.argv[1]
-    if os.path.isfile(file):
-        with open(file) as csvfile:
-            csv_reader = csv.reader(csvfile)
-            print(file)
-            winPercentage = {}
-            for row in csv_reader:
-                turnNumber = row[0]
-                gameResult = row[4]
-                splitGameResult = row[5]
-
-                winPercentage[turnNumber] = gameResult
-            winPercentageCounter = Counter()
-            for result in winPercentage.values():
-                winPercentageCounter[result] += 1
-            
-            sortedWinPercentageFreq = {'W': 0,'L': 0,'D': 0}
-            for key in winPercentageCounter:
-                if key == 'W':
-                    sortedWinPercentageFreq['W'] = winPercentageCounter[key]
-                if key == 'L':
-                    sortedWinPercentageFreq['L'] = winPercentageCounter[key]
-                if key == 'D':
-                    sortedWinPercentageFreq['D'] = winPercentageCounter[key]
-                if key == 'W_N':
-                    sortedWinPercentageFreq['W'] += winPercentageCounter[key]
-                if key == 'L_N':
-                    sortedWinPercentageFreq['L'] += winPercentageCounter[key]
-                if key == 'D_N':
-                    sortedWinPercentageFreq['D'] += winPercentageCounter[key]
-            print(sortedWinPercentageFreq)
-            figureObject, axesObject = plt.subplots()
-            axesObject.pie(sortedWinPercentageFreq.values(), labels=sortedWinPercentageFreq.keys(), autopct=autopct(sortedWinPercentageFreq.values()),startangle=90)
-
-            plt.title(file+ "\nWin Percentage")
-            plt.savefig(os.getcwd()+'\\Graphs\\WinPercentagePieNoNaturals\\'+file+'.png')
-            plt.show()
-"""
