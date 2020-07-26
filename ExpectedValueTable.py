@@ -35,7 +35,7 @@ os.chdir('Graphs')
 
 with open('ExpectedValueTable.csv', 'w', newline='') as csv_output_file:
     writer = csv.writer(csv_output_file)
-    writer.writerow(['Strategy Name', 'NonMinBet%', 'Chips Won When Min Betting', 'Chips Won When Non Min Betting', 'Expected Value (100 hands), Std Deviation'])
+    writer.writerow(['Strategy Name', 'NonMinBet%', 'Chips Won When Min Betting', 'Chips Won When Non Min Betting', 'Expected Value (100 hands)', 'Std Deviation'])
     os.chdir('..')
     for file in files:
         if os.path.isfile(file):
