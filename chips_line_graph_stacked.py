@@ -23,10 +23,10 @@ def autopct(values):
     return my_autopct
 # %%
 startChips = 1000
-handsPlayed = 100000
+handsPlayed = 1000000
 
 plt.xlim(0, handsPlayed)
-plt.ylim(startChips-10000, 100000)
+plt.ylim(startChips-60000, 1000000)
 plt.title('Chips Won By Strategy')
 plt.xlabel('Hand Number')
 plt.ylabel('Chip Count')

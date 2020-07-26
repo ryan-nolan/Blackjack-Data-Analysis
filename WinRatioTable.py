@@ -38,7 +38,7 @@ with open('WinLossTable.csv', 'w', newline='') as csv_output_file:
     writer.writerow(['Strategy Name', 'Starting Chips', 'End Chips', 'Chips Won', 'Action', 'Win%','Loss%','Tie%','Win/Loss%'])
     os.chdir('..')
     startChips = 10000
-    turnsPlayed = 100000
+    turnsPlayed = 1000000
     for file in files:
         if os.path.isfile(file):
             with open(file) as csvfile:

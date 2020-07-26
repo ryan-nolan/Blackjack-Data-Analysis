@@ -45,7 +45,7 @@ with open('ExpectedValueTable.csv', 'w', newline='') as csv_output_file:
                 chipGainPerHundredHands = {}
                 overMinBetPercentage = {}
                 chipsWonWhenStake = {}
-                playerStartChipsBeforeHundredHands = 500 #input starting chips for simulation
+                playerStartChipsBeforeHundredHands = 1000 #input starting chips for simulation
                 minBet = 10 #Min bet when simulation is setup
                 for row in csv_reader:
                     turnNumber = row[0]
