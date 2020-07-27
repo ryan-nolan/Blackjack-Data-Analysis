@@ -58,6 +58,7 @@ for file in files:
             plt.title(file + '\nChip Count Per Turn')
             plt.xlabel('Hand Number')
             plt.ylabel('Chip Count')
+            plt.gcf().subplots_adjust(left=0.15)
             plt.savefig(os.getcwd()+'\\Graphs\\ChipsWonLine\\'+file+'.png')
             plt.clf()
             
