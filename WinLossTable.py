@@ -24,21 +24,31 @@ def autopct(values):
         return '{p:.2f}%  ({v:d})'.format(p=pct,v=ret)
     return my_autopct
 
-# %%
 #File Handling
 path = Path("C:/Users/Ryan/Desktop/Dissertation/Source/Data") #insert folder path here
 os.chdir(path)
 files = os.listdir()
 print(sys.argv)
 
-# %%
+startChips = 10000
+turnsPlayed = 25000
+
+#Program must require 2 arguments
+if(len(sys.argv) != 3):
+    print("This program requires 2 arguments, the starting amount of chips and the amount of hands played")
+    exit()
+else:
+    startChips = int(sys.argv[1])
+    turnsPlayed = int(sys.argv[2])
+    
+
+#Create table
 os.chdir('Graphs')
 with open('WinLossTable.csv', 'w', newline='') as csv_output_file:
     writer = csv.writer(csv_output_file)
     writer.writerow(['Strategy Name', 'Starting Chips', 'End Chips', 'Chips Won', 'Action', 'Win%','Loss%','Tie%','Win/Loss%'])
     os.chdir('..')
-    startChips = 10000
-    turnsPlayed = 1000000
+
     for file in files:
         if os.path.isfile(file):
             with open(file) as csvfile:
@@ -63,7 +73,7 @@ with open('WinLossTable.csv', 'w', newline='') as csv_output_file:
                 winPercentageCounter = Counter()
                 for result in winlossPercentage.values():
                     winPercentageCounter[result] += 1
-                
+                #Tabulate win percentage
                 sortedWinPercentageFreq = {'W': 0,'L': 0,'D': 0}
                 for key in winPercentageCounter:
                     if key == 'W':
@@ -78,23 +88,23 @@ with open('WinLossTable.csv', 'w', newline='') as csv_output_file:
                         sortedWinPercentageFreq['L'] += winPercentageCounter[key]
                     if key == 'D_N':
                         sortedWinPercentageFreq['D'] += winPercentageCounter[key]
-                print(sortedWinPercentageFreq)
+
+                #Calculate Win Ratios
                 winPercentage = (sortedWinPercentageFreq['W'] / (sortedWinPercentageFreq['W']+sortedWinPercentageFreq['L']+sortedWinPercentageFreq['D']))*100
                 lossPercentage = (sortedWinPercentageFreq['L'] / (sortedWinPercentageFreq['W']+sortedWinPercentageFreq['L']+sortedWinPercentageFreq['D']))*100
                 drawPercentage = (sortedWinPercentageFreq['D'] / (sortedWinPercentageFreq['W']+sortedWinPercentageFreq['L']+sortedWinPercentageFreq['D']))*100
-                print(winPercentage)
-                print(lossPercentage)
-                print(drawPercentage)
+                print("Win%:\t"+str(winPercentage))
+                print("Loss%:\t"+str(lossPercentage))
+                print("Draw%:\t"+str(drawPercentage))
                 winLossRatio = (winPercentage / (winPercentage+lossPercentage)) * 100
-                print(winLossRatio)
+                print("Win/Loss%:\t"+str(winLossRatio))
                 
-                print(startChips)
-                #endChips = endChipsDict[str(turnsPlayed)]
-                print(endChips)
+                print("Start Chips:\t"+str(startChips))
+                print("End Chips:\t"+str(endChips))
                 chipsWon = int(endChips) - startChips
-                print(chipsWon)
-                print(action)
-                print(stakesWon)
+                print("Chips Won:\t"+str(chipsWon))
+                print("Action%:\t"+str(action))
+                print("Stakes won:\t"+str(stakesWon))
                 StrategyName = file.split('_')[0]
 
                 

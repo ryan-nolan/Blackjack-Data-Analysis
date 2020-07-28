@@ -10,7 +10,7 @@
             "request": "launch",
             "program": "${file}",
             "console": "integratedTerminal",
-            "args" : ["BasicStrategy_hands(100000)shuffleFrequency(13)deckSize(52).csv", "test"]
+            "args" : ["10000", "10"]
         },
 
         {

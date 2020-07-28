@@ -1,4 +1,3 @@
-#%%
 import matplotlib.pyplot as plt
 import matplotlib as mpl
 import numpy as np
@@ -7,43 +6,56 @@ import os
 from pathlib import Path
 from collections import Counter
 import statistics
+import sys
 
-
-# %%
 #File Handling
 path = Path("C:/Users/Ryan/Desktop/Dissertation/Source/Data") #insert folder path here
 os.chdir(path)
 files = os.listdir()
 
+#Auto format for graph
 def autopct(values):
     def my_autopct(pct):
         sumOf = sum(values)
         ret = int(round(pct * sumOf / 100.0))
         return '{p:.2f}%  ({v:d})'.format(p=pct,v=ret)
     return my_autopct
-# %%
-startChips = 1000
-handsPlayed = 1000000
 
+#x and y bounds for graph, set in args
+startChips = 10000
+handsPlayed = 25000
+
+#Program must require 2 arguments
+if(len(sys.argv) != 3):
+    print("This program requires 2 arguments, the starting amount of chips and the amount of hands played")
+    exit()
+else:
+    startChips = int(sys.argv[1])
+    handsPlayed = int(sys.argv[2])
+    
+
+#Set chart axis and labels
 plt.xlim(0, handsPlayed)
-plt.ylim(startChips-60000, 1000000)
+plt.ylim(startChips-5000, 25000)
 plt.title('Chips Won By Strategy')
 plt.xlabel('Hand Number')
 plt.ylabel('Chip Count')
 plt.gcf().subplots_adjust(left=0.15)
+
+#Parse ever file in data folder
 for file in files:
     if os.path.isfile(file):
         with open(file) as csvfile:
             csv_reader = csv.reader(csvfile)
             print(file)
             chips = {}
+            #Parse file
             for row in csv_reader:
                 turnNumber = row[0]
                 chipsValue = row[1]
                 chips[turnNumber] = chipsValue
             
             del chips['HandNumber']
-            #print(chips)
             handsShownMod = 10
             listOfChips = []
             for key in chips:
@@ -51,29 +63,13 @@ for file in files:
                     listOfChips.append(chips[key])
                 elif(int(key)==0):
                     listOfChips.append(chips[key])
-            #print(listOfChips)
-            
-            x1 = (int(list(chips)[-1]))
-            x0 = int(list(chips)[0])
             valuesAsInt = []
             for val in chips.values():
                 valuesAsInt.append(int(val))
-            y1 = max(valuesAsInt)
-            y0 = min(valuesAsInt)
-            #print(valuesAsInt)
+                
             StrategyName = file.split('_')[0]
             plt.plot(valuesAsInt)
-            
-            """
-            plt.xlim(x0, x1)
-            plt.ylim(y0-100, 100000)
-            plt.title(file + '\nChip Count Per Turn')
-            plt.xlabel('Hand Number')
-            plt.ylabel('Chip Count')
-            """
-            
-            #plt.savefig(os.getcwd()+'\\Graphs\\ChipsWonStackedLine\\'+file+'.png')
-            #plt.show()
+
 filenames = []
 for file in files:
     if os.path.isfile(file):
@@ -82,6 +78,3 @@ for file in files:
 print(filenames)
 plt.legend(filenames)
 plt.savefig(os.getcwd()+'\\Graphs\\ChipsWonStackedLine\\ChipsWon.png')
-
-
-# %%

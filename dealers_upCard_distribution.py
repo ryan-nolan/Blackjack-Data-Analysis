@@ -1,4 +1,3 @@
-#%%
 import matplotlib.pyplot as plt
 import matplotlib as mpl
 import numpy as np
@@ -8,8 +7,6 @@ from pathlib import Path
 from collections import Counter
 import statistics
 
-
-# %%
 #File Handling
 path = Path("C:/Users/Ryan/Desktop/Dissertation/Source/Data") #insert folder path here
 os.chdir(path)
@@ -21,7 +18,7 @@ def autopct(values):
         ret = int(round(pct * sumOf / 100.0))
         return '{p:.2f}%  ({v:d})'.format(p=pct,v=ret)
     return my_autopct
-# %%
+
 for file in files:
     if os.path.isfile(file):
         with open(file) as csvfile:
@@ -66,7 +63,7 @@ for file in files:
                     sortedDealersUpCardFreq['Queen'] = count[key]
                 if key == 'King':
                     sortedDealersUpCardFreq['King'] = count[key]
-            #print(sortedDealersUpCardFreq)
+
             plt.bar(sortedDealersUpCardFreq.keys(), sortedDealersUpCardFreq.values(), 0.4, color='g')
 
             mean = statistics.mean(sortedDealersUpCardFreq.values())
@@ -75,5 +72,4 @@ for file in files:
 
             plt.title(file+ "\nDealer's UpCard Distribution")
             plt.savefig(os.getcwd()+'\\Graphs\\UpCardDistributionHistogram\\'+file+'.png')
-            #plt.show()
             

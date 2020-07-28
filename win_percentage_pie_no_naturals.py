@@ -1,4 +1,3 @@
-#%%
 import matplotlib.pyplot as plt
 import matplotlib as mpl
 import numpy as np
@@ -16,14 +15,13 @@ def autopct(values):
         return '{p:.2f}%  ({v:d})'.format(p=pct,v=ret)
     return my_autopct
 
-# %%
+
 #File Handling
 path = Path("C:/Users/Ryan/Desktop/Dissertation/Source/Data") #insert folder path here
 os.chdir(path)
 files = os.listdir()
 print(sys.argv)
-
-# %%
+#Create graphs for all files in data folder
 if len(sys.argv) == 1: 
     for file in files:
         if os.path.isfile(file):
@@ -61,7 +59,7 @@ if len(sys.argv) == 1:
 
                 plt.title(file+ "\nWin Percentage")
                 plt.savefig(os.getcwd()+'\\Graphs\\WinPercentagePieNoNaturals\\'+file+'.png')
-                #plt.show()
+#If filename is provided create graphs for that file
 elif len(sys.argv) == 2:
     file = sys.argv[1]
     if os.path.isfile(file):
